@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  db:
+    image: mysql:8.0
+    container_name: mysql_db
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: loja
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+
+  ##app:
+  ##  image: your_app_image  # Substitua pelo nome da sua imagem de aplicação
+  ##  container_name: your_app
+  ##  depends_on:
+  ##    - db
+  ##  environment:
+  ##    DATABASE_URL: mysql+mysqlconnector://user:password@db/loja
+  ##  ports:
+  ##    - "8000:8000"
+  ##  volumes:
+  ##    - .:/app
+
+volumes:
+  db_data:
+
